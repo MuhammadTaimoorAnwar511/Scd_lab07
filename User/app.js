@@ -28,7 +28,15 @@ app.use(session({
 app.use('/users', userRoutes);
 app.use('/tasks', taskRoutes);
 
-// Start the server
-app.listen(port, () => {
+// Start the server and store the server instance
+const server = app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
+
+setTimeout(() => {
+  console.log('Shutting down server...');
+  server.close(() => {
+    console.log('Server terminated after 1 minute');
+    process.exit(0);
+  });
+}, 60000);
