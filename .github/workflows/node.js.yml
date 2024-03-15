@@ -30,5 +30,5 @@ jobs:
     - run: node --version
     - run: npm --version
     - run: npm install
-    - run: node app.js
+    - run: node User/app.js
     
